@@ -2,11 +2,6 @@
 
 **RAGify** is a Streamlit web app that lets you **upload any PDF and ask questions** about its contents.
 It uses **retrieval-augmented generation (RAG)** powered by **Ollama**, **FAISS**, and **LangChain** – all running locally on your machine.
-
-![image](img1.png)
-
-![image](img2.png)
-
 No cloud APIs. No vendor lock-in. Just fast, private document understanding.
 
 ---
@@ -133,5 +128,8 @@ app.py         # Main Streamlit app
 
 ---
 
+![image](img1.png)
+
+![image](img2.png)
 
 ⭐ Enjoy using **RAGify** to supercharge your document understanding!
