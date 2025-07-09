@@ -23,7 +23,7 @@ No cloud APIs. No vendor lock-in. Just fast, private document understanding.
 
 ## 🚀 Quickstart
 
-### 1 Install dependencies
+### 1) Install dependencies
 
 Make sure you have Python 3.9+.
 
@@ -47,7 +47,7 @@ ollama pull all-minilm:l6-v2
 
 ---
 
-### 2 Run the app
+### 2) Run the app
 
 ```bash
 streamlit run app.py
@@ -55,7 +55,7 @@ streamlit run app.py
 
 ---
 
-### 3 Use RAGify
+### 3) Use RAGify
 
 1. Open your browser at `http://localhost:8501`
 2. Upload a PDF
