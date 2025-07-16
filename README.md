@@ -127,9 +127,10 @@ app.py         # Main Streamlit app
 * [FAISS](https://github.com/facebookresearch/faiss)
 
 ---
+* Screenshot:
+* ![image](image.png)
 
-![image](image.png)
-
-![flowdiagram](RAGify.png)
+* Architecture Diagram:
+* ![flowdiagram](RAGify.png)
 
 ⭐ Enjoy using **RAGify** to supercharge your document understanding!
