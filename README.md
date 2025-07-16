@@ -133,7 +133,7 @@ app.py         # Main Streamlit app
 
 ---
 
-## 📸 Screenshots
+## 📸 RAGify
 
 * Screenshot:
 
