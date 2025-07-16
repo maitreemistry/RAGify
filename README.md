@@ -126,11 +126,11 @@ app.py         # Main Streamlit app
 
 ## 🙏 Acknowledgements
 
+* [Mr. Dheeraj Nair & Mr. Jai Desai](https://bosleo.com/)
 * [Streamlit](https://streamlit.io/)
 * [LangChain](https://www.langchain.com/)
 * [Ollama](https://ollama.com/)
 * [FAISS](https://github.com/facebookresearch/faiss)
-* [Mr. Dheeraj Nair & Mr. Jai Desai](https://bosleo.com/)
 
 ---
 
