@@ -128,8 +128,8 @@ app.py         # Main Streamlit app
 
 ---
 
-![image](img1.png)
+![image](image.png)
 
-![image](img2.png)
+![flowdiagram](RAGify.png)
 
 ⭐ Enjoy using **RAGify** to supercharge your document understanding!
