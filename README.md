@@ -1,6 +1,6 @@
 # 🧠 RAGify - "RAG-powered search"
 
-**RAGify** is a Streamlit web app that lets you **upload multiple documents in many formats and ask questions** about their contents.
+**RAGify** is a Streamlit web app that lets you **upload multiple documents in many formats, paste text, or even crawl webpages/sitemaps** and ask questions about their contents.
 It uses **retrieval-augmented generation (RAG)** powered by **Ollama**, **FAISS**, and **LangChain** – all running locally on your machine.
 No cloud APIs. No vendor lock-in. Just fast, private document understanding.
 
@@ -8,16 +8,19 @@ No cloud APIs. No vendor lock-in. Just fast, private document understanding.
 
 ## ✨ Features
 
-* **Upload multiple documents at once**
-* Supports **PDF, DOCX, TXT, PPTX, CSV, XLSX** formats
-* Uses **LangChain** built-in loaders for parsing all document types
-* Splits documents into manageable text chunks with overlap
-* Embeds chunks locally with **Ollama embeddings**
-* Stores embeddings in a **FAISS** vector store for local retrieval
-* Retrieves relevant context for any question you ask
-* Generates accurate, context-grounded answers with **Ollama** models
-* Transparent: shows the **retrieved context** used to answer
-* **Runs 100% locally** – your data never leaves your machine
+* ✉️ Upload **multiple documents at once**
+* 🔗 **Paste text** or **crawl webpages / sitemap URLs**
+* 📂 Supports **PDF, DOCX, TXT, PPTX, CSV, XLSX, XML, HTML** formats
+* ⚙️ Automatically **extracts URLs from documents** and loads their content
+* 📊 Uses **LangChain** built-in loaders for all document types
+* 🔄 Splits documents into manageable text chunks with overlap
+* 🧩 Embeds chunks locally with **Ollama embeddings**
+* 🚪 Stores embeddings in a **FAISS** vector store for local retrieval
+* 💡 Retrieves relevant context for any question you ask
+* 🤖 Generates context-grounded answers with **Ollama** models (like `qwen2.5:0.5b`)
+* ⚡ Transparent: shows **retrieved context** used to answer
+* 🚫 Delete saved vector stores easily
+* 💻 **Runs 100% locally** – your data never leaves your machine
 
 ---
 
@@ -53,16 +56,19 @@ streamlit run app.py
 ### 3) Use RAGify
 
 1. Open your browser at `http://localhost:8501`
-2. Upload one or more documents (PDF, DOCX, TXT, PPTX, CSV, XLSX)
-3. Wait for processing
-4. Type your question
-5. Get answers instantly, grounded in your uploaded content!
+2. Upload one or more documents (PDF, DOCX, TXT, PPTX, CSV, XLSX, XML, HTML)
+3. Or paste custom text / enter a webpage or sitemap URL
+4. Choose whether to auto-parse URLs found inside content
+5. Enter a name to save this document set
+6. Click "Process Documents"
+7. Ask questions about your content!
 
 ---
 
-## 🛹 How it works
+## 🛩️ How it works
 
-1. **Upload** one or more documents – RAGify uses **LangChain loaders**:
+1. **Upload** or **paste/crawl** documents
+2. RAGify uses **LangChain loaders**:
 
    * `PyPDFLoader` for PDFs
    * `UnstructuredWordDocumentLoader` for DOCX
@@ -70,23 +76,25 @@ streamlit run app.py
    * `TextLoader` for TXT
    * `CSVLoader` for CSV
    * `UnstructuredExcelLoader` for XLSX
-2. **Split** text into \~2000-character chunks with 200-character overlap.
-3. **Embed** chunks using **OllamaEmbeddings**.
-4. **Store** embeddings in a **FAISS** vector store.
-5. **Retrieve** the top matching chunks for any question.
-6. **Generate** answers with **ChatOllama** using a prompt that restricts responses to retrieved context.
-
-This is **retrieval-augmented generation (RAG)** in action.
+   * `UnstructuredXMLLoader` for XML
+   * `UnstructuredHTMLLoader` for HTML
+   * `WebBaseLoader` & `SitemapLoader` for URLs
+3. **Splits** content into \~2000-character chunks with 200-character overlap
+4. **Embeds** using **OllamaEmbeddings**
+5. **Stores** in **FAISS** vector DB
+6. **Retrieves** top matches using k-NN
+7. **Answers** using **ChatOllama**, limited to retrieved context
 
 ---
 
 ## 🛠️ Configurations
 
-You can adjust in `app.py`:
+Edit in `app.py`:
 
-* Model names (e.g. `qwen2.5:0.5b`, `all-minilm:l6-v2`)
+* Ollama model names (LLM and Embedding)
 * Chunk size and overlap
-* Prompt template
+* Number of retrieved chunks (`k`)
+* Prompt template (instruction to the model)
 
 ---
 
@@ -94,22 +102,25 @@ You can adjust in `app.py`:
 
 RAGify runs entirely on your machine:
 
-- No remote API calls ✅
-- No cloud storage ✅
-- Your documents stay private ✅
+* No remote API calls ✅
+* No cloud storage ✅
+* Your documents stay private ✅
 
 ---
 
-## ✨ Example prompt
+## ✨ Example Prompt
 
 ```text
-Answer the question using only the provided context.
+You are a helpful assistant. Use only the provided context to answer the question.
 
 <context>
 {context}
 </context>
 
 Question: {input}
+
+If the answer is not in the context, respond exactly:
+"The question is out of the context. Please ask something from the document uploaded."
 
 Answer:
 ```
@@ -142,18 +153,8 @@ app.py         # Main Streamlit app
 
 * Architecture Diagram:
 
- ![flowdiagram](RAGify.png)
+![flowdiagram](RAGify.png)
 
 ---
 
-⭐ Enjoy using **RAGify** to supercharge your understanding of **any** set of documents – all **locally and privately**!
-
-
-
-
-
-
-
-
-
-
+️ Enjoy using **RAGify** to supercharge your understanding of **any** set of documents – all **locally and privately**!
