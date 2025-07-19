@@ -149,7 +149,7 @@ app.py         # Main Streamlit app
 
 * Screenshot:
 
-  ![image](image.png)
+  ![image](img.png)
 
 * Architecture Diagram:
 
